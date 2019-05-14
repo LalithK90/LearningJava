@@ -1,38 +1,108 @@
-package Operators.Statments.Loop;
+package ShortHandOperationANDMissilenous;
 
 public class LoopPattenLogic {
     public static void main(String[] args) {
         normal();
+        /*expected output
+        -----------------
+         * * * * * *
+         * * * * * *
+         * * * * * *
+         * * * * * *
+         * * * * * *
+         * * * * * *
+         */
         forLoopInForLoop();
+        /*expected output
+        ------------------
+         * * * * *
+         * * * * *
+         * * * * *
+         * * * * *
+         * * * * *
+         */
         Example1();
+        /*expected output
+        -----------------
+         *
+         * *
+         * * *
+         * * * *
+         * * * * *
+
+         */
         Example2();
+        /*expected output
+        -----------------
+        1 2 3 4
+        1 2 3 4
+        1 2 3 4
+        1 2 3 4
+         */
         Example3();
+        /*expected output
+        -----------------
+        1 1 1 1
+        2 2 2 2
+        3 3 3 3
+        4 4 4 4
+         */
         Example4();
+          /*expected output
+        -----------------
+        2 3 4 5
+        3 4 5 6
+        4 5 6 7
+        5 6 7 8
+         */
         Example5();
+          /*expected output
+        -----------------
+        1 2 3 4
+        2 3 4 5
+        3 4 5 6
+        4 5 6 7
+         */
         Example6();
+          /*expected output
+        -----------------
+        1 2 3 4
+        2 3 4 1
+        3 4 1 2
+        4 1 2 3
+         */
+        Example7();
+          /*expected output
+        -----------------
+        1
+        0 1
+        1 0 1
+        0 1 0 1
+        1 0 1 0 1
+         */
     }
 
     private static void normal() {
         for (int i = 0; i <= 5; i++) {
             System.out.print(" *");
         }
-        System.out.println("");
+        System.out.println();
         for (int i = 0; i <= 5; i++) {
             System.out.print(" *");
         }
-        System.out.println("");
+        System.out.println();
         for (int i = 0; i <= 5; i++) {
             System.out.print(" *");
         }
-        System.out.println("");
+        System.out.println();
         for (int i = 0; i <= 5; i++) {
             System.out.print(" *");
         }
-        System.out.println("");
+        System.out.println();
         for (int i = 0; i <= 5; i++) {
             System.out.print(" *");
         }
-        System.out.println("");
+        System.out.println();
         for (int i = 0; i <= 5; i++) {
             System.out.print(" *");
         }
@@ -44,7 +114,7 @@ public class LoopPattenLogic {
             for (int j = 0; j <= 4; j++) {
                 System.out.print(" *");
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -54,7 +124,7 @@ public class LoopPattenLogic {
             for (int j = 0; j <= i; j++) {
                 System.out.print(" *");
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -64,7 +134,7 @@ public class LoopPattenLogic {
             for (int j = 1; j <= 4; j++) {
                 System.out.print(j + " ");
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -74,7 +144,7 @@ public class LoopPattenLogic {
             for (int j = 1; j <= 4; j++) {
                 System.out.print(i + " ");
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -84,7 +154,7 @@ public class LoopPattenLogic {
             for (int j = 1; j <= 4; j++) {
                 System.out.print(i + j + " ");
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -94,7 +164,7 @@ public class LoopPattenLogic {
             for (int j = 1; j <= 4; j++) {
                 System.out.print(i + j - 1 + " ");
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -110,7 +180,33 @@ public class LoopPattenLogic {
                 }
 
             }
-            System.out.println("");
+            System.out.println();
+        }
+    }
+
+    private static void Example7() {
+        System.out.println("\n");
+        /* target out put
+         * 1
+         * 0 1
+         * 1 0 1
+         * 0 1 0 1
+         * 1 0 1 0 1
+         * */
+        int i;
+        int j;
+
+        for (i = 1; i <= 5; i++) // rows
+        {
+            for (j = 1; j <= i; j++) // columns
+            {
+                if ((i + j) % 2 == 0) {
+                    System.out.print("1 ");
+                } else {
+                    System.out.print("0 ");
+                }
+            }
+            System.out.println();
         }
     }
 }
