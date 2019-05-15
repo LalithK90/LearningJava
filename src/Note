@@ -1,0 +1,17 @@
+    Access Modifier
+===============================
+Private --> Specific Class
+Default --> Specific Package
+Public --> Any Class or package
+Protected --> Subsiding Class
+
+--------------------------------------------
+javac --> compiler of java class
+javap --> get structure of java class file
+        in command line
+        \>javap Example.java    like
+        \>javap java.lang.object   like
+        run on command line
+java
+
+----------------------------------------------
