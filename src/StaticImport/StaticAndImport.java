@@ -10,7 +10,7 @@ public class StaticAndImport {
         //System.out.println("Hello world"); --> if import system class in any class can be access
         out.println("Hello world");
         Example01.show(); // example class in same package there for no need to create new object
-        out.println("after import the Example01 class ");
+        out.println("after import the PrintMethodExample01 class ");
         show();
     }
 }

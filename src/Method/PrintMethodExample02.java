@@ -1,6 +1,6 @@
-package PrintMethod;
+package Method;
 
-public class Example02 {
+public class PrintMethodExample02 {
     public static void main(String[] args) {
         int i, j, k;
         i = 10;

@@ -26,3 +26,7 @@ Anonymous Object ( no name for this kind of object) --> new Example().show();
 1   Abstract Methods are method can only be declared, not defined.
 2   Abstract Class can have Abstract Methods.
 3   You can not create objects of Abstract Class.
+----------------------------------------------------------
+Why java Not SUPPORT Multiple Inheritance ?
+    ==>
+-------------------------------------------------------------------

@@ -1,6 +1,6 @@
-package PrintMethod;
+package Method;
 
-public class Example01 {
+public class PrintMethodExample01 {
     public static void main(String[] args) {
                 //System --> System is a CLASS
                 //.out --> out is an OBJECT
