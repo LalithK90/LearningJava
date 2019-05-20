@@ -1,0 +1,736 @@
+                                            Files and I/O
+                                            -------------
+The java.io package contains nearly every class you might ever need to perform input and output (I/O) in Java. All these streams represent an input source and an output destination. The stream in the java.io package supports many data such as primitives, object, localized characters, etc.
+Stream
+
+A stream can be defined as a sequence of data. There are two kinds of Streams −
+
+    1. InPutStream − The InputStream is used to read data from a source.
+
+    2. OutPutStream − The OutputStream is used for writing data to a destination.
+
+Streams
+-------
+
+Java provides strong but flexible support for I/O related to files and networks but this tutorial covers very basic functionality related to streams and I/O.
+We will see the most commonly used examples one by one −
+
+                Byte Streams
+                ------------
+
+Java byte streams are used to perform input and output of 8-bit bytes.
+Though there are many classes related to byte streams but the most frequently used classes are, FileInputStream and FileOutputStream.
+Following is an example which makes use of these two classes to copy an input file into an output file −
+
+Example
+
+                import java.io.*;
+                public class CopyFile {
+
+                   public static void main(String args[]) throws IOException {
+                      FileInputStream in = null;
+                      FileOutputStream out = null;
+
+                      try {
+                         in = new FileInputStream("input.txt");
+                         out = new FileOutputStream("output.txt");
+
+                         int c;
+                         while ((c = in.read()) != -1) {
+                            out.write(c);
+                         }
+                      }finally {
+                         if (in != null) {
+                            in.close();
+                         }
+                         if (out != null) {
+                            out.close();
+                         }
+                      }
+                   }
+                }
+
+Now let's have a file input.txt with the following content −
+
+This is test for copy file.
+
+As a next step, compile the above program and execute it, which will result in creating output.txt file with the same content as we have in input.txt. So let's put the above code in CopyFile.java file and do the following −
+
+                $javac CopyFile.java
+                $java CopyFile
+
+                Character Streams
+                -----------------
+
+Java Byte streams are used to perform input and output of 8-bit bytes, whereas Java Character streams are used to perform input and output for 16-bit unicode.
+Though there are many classes related to character streams but the most frequently used classes are, FileReader and FileWriter.
+Though internally FileReader uses FileInputStream and FileWriter uses FileOutputStream but here the major difference is that FileReader reads two bytes at a time and FileWriter writes two bytes at a time.
+
+We can re-write the above example, which makes the use of these two classes to copy an input file (having unicode characters) into an output file −
+
+Example
+
+            import java.io.*;
+            public class CopyFile {
+
+               public static void main(String args[]) throws IOException {
+                  FileReader in = null;
+                  FileWriter out = null;
+
+                  try {
+                     in = new FileReader("input.txt");
+                     out = new FileWriter("output.txt");
+
+                     int c;
+                     while ((c = in.read()) != -1) {
+                        out.write(c);
+                     }
+                  }finally {
+                     if (in != null) {
+                        in.close();
+                     }
+                     if (out != null) {
+                        out.close();
+                     }
+                  }
+               }
+            }
+
+Now let's have a file input.txt with the following content −
+
+This is test for copy file.
+
+As a next step, compile the above program and execute it, which will result in creating output.txt file with the same content as we have in input.txt. So let's put the above code in CopyFile.java file and do the following −
+
+        $javac CopyFile.java
+        $java CopyFile
+
+                                Standard Streams
+                                ----------------
+
+All the programming languages provide support for standard I/O where the user's program can take input from a keyboard and then produce an output on the computer screen.
+If you are aware of C or C++ programming languages, then you must be aware of three standard devices STDIN, STDOUT and STDERR.
+Similarly, Java provides the following three standard streams −
+
+    1. Standard Input − This is used to feed the data to user's program and usually a keyboard is used as standard input stream and represented as System.in.
+
+    2. Standard Output − This is used to output the data produced by the user's program and usually a computer screen is used for standard output stream and represented as System.out.
+
+    3. Standard Error − This is used to output the error data produced by the user's program and usually a computer screen is used for standard error stream and represented as System.err.
+
+Following is a simple program, which creates InputStreamReader to read standard input stream until the user types a "q" −
+
+Example
+
+                import java.io.*;
+                public class ReadConsole {
+
+                   public static void main(String args[]) throws IOException {
+                      InputStreamReader cin = null;
+
+                      try {
+                         cin = new InputStreamReader(System.in);
+                         System.out.println("Enter characters, 'q' to quit.");
+                         char c;
+                         do {
+                            c = (char) cin.read();
+                            System.out.print(c);
+                         } while(c != 'q');
+                      }finally {
+                         if (cin != null) {
+                            cin.close();
+                         }
+                      }
+                   }
+                }
+
+Let's keep the above code in ReadConsole.java file and try to compile and execute it as shown in the following program. This program continues to read and output the same character until we press 'q' −
+
+    $javac ReadConsole.java
+    $java ReadConsole
+        Enter characters, 'q' to quit.
+        1
+        1
+        e
+        e
+        q
+        q
+
+Reading and Writing Files
+--------------------------
+
+As described earlier, a stream can be defined as a sequence of data. The InputStream is used to read data from a source and the OutputStream is used for writing data to a destination.
+
+Here is a hierarchy of classes to deal with Input and Output streams.
+
+                                                                            Object
+                                                                                |
+                        ---------------------------------------------------------------------------------------------------------
+                        |                                                                                                       |
+                   InputStream                                                                                              OutputStream
+                        |                                                                                                       |
+     ------------------------------------------------------------------                     -----------------------------------------------------------------------
+     |                      |                       |                 |                     |                           |                       |                 |
+FileInputStream     ByteArrayInputStream    FilterInputStream   ObjectInputStream       FileOutputStream       ByteArrayOutputStream    FilterOutputStream  ObjectOutputStream
+                                                    |                                                                                           |
+                                   ----------------------------------                                                                ----------------------------
+                                   |                                |                                                                |                          |
+                           BufferedInputStream               DataInputStream                                                BufferedOutputStream        DataOutputStream
+
+
+
+
+The two important streams are FileInputStream and FileOutputStream, which would be discussed in this tutorial.
+
+            FileInputStream
+            ---------------
+
+This stream is used for reading data from the files. Objects can be created using the keyword new and there are several types of constructors available.
+
+Following constructor takes a file name as a string to create an input stream object to read the file −
+
+            InputStream f = new FileInputStream("C:/java/hello");
+
+Following constructor takes a file object to create an input stream object to read the file. First we create a file object using File() method as follows −
+
+        File f = new File("C:/java/hello");
+        InputStream f = new FileInputStream(f);
+
+Once you have InputStream object in hand, then there is a list of helper methods which can be used to read to stream or to do other operations on the stream.
+
+1 public void close() throws IOException{} ---> This method closes the file output stream. Releases any system resources associated with the file. Throws an IOException.
+
+2 protected void finalize()throws IOException {} ---> This method cleans up the connection to the file. Ensures that the close method of this file output stream is called when there are no more references to this stream. Throws an IOException.
+
+3 public int read(int r)throws IOException{} ---> This method reads the specified byte of data from the InputStream. Returns an int. Returns the next byte of data and -1 will be returned if it's the end of the file.
+
+4 public int read(byte[] r) throws IOException{} ---> This method reads r.length bytes from the input stream into an array. Returns the total number of bytes read. If it is the end of the file, -1 will be returned.
+
+5 public int available() throws IOException{} ---> Gives the number of bytes that can be read from this file input stream. Returns an int.
+
+There are other important input streams available, for more detail you can refer to the following links −
+
+    * ByteArrayInputStream
+
+    * DataInputStream
+
+                FileOutputStream
+                -----------------
+
+FileOutputStream is used to create a file and write data into it. The stream would create a file, if it doesn't already exist, before opening it for output.
+
+Here are two constructors which can be used to create a FileOutputStream object.
+
+Following constructor takes a file name as a string to create an input stream object to write the file −
+
+        OutputStream f = new FileOutputStream("C:/java/hello")
+
+Following constructor takes a file object to create an output stream object to write the file. First, we create a file object using File() method as follows −
+
+        File f = new File("C:/java/hello");
+        OutputStream f = new FileOutputStream(f);
+
+Once you have OutputStream object in hand, then there is a list of helper methods, which can be used to write to stream or to do other operations on the stream.
+
+1 public void close() throws IOException{} ---> This method closes the file output stream. Releases any system resources associated with the file. Throws an IOException.
+
+2 protected void finalize()throws IOException {} ---> This method cleans up the connection to the file. Ensures that the close method of this file output stream is called when there are no more references to this stream. Throws an IOException.
+
+3 public void write(int w)throws IOException{} ---> This methods writes the specified byte to the output stream.
+
+4 public void write(byte[] w) ---> Writes w.length bytes from the mentioned byte array to the OutputStream.
+
+There are other important output streams available, for more detail you can refer to the following links −
+
+   * ByteArrayOutputStream
+
+The ByteArrayInputStream class allows a buffer in the memory to be used as an InputStream. The input source is a byte array.
+
+ByteArrayInputStream class provides the following constructors.
+
+    1 ByteArrayInputStream(byte [] a) ---> This constructor accepts a byte array as a parameter.
+
+    2 ByteArrayInputStream(byte [] a, int off, int len) ---> This constructor takes an array of bytes, and two integer values, where off is the first byte to be read and len is the number of bytes to be read.
+
+Once you have ByteArrayInputStream object in hand then there is a list of helper methods which can be used to read the stream or to do other operations on the stream.
+
+    1 public int read() ---> This method reads the next byte of data from the InputStream. Returns an int as the next byte of data. If it is the end of the file, then it returns -1.
+
+    2 public int read(byte[] r, int off, int len) ---> This method reads upto len number of bytes starting from off from the input stream into an array. Returns the total number of bytes read. If it is the end of the file, -1 will be returned.
+
+    3 public int available() ---> Gives the number of bytes that can be read from this file input stream. Returns an int that gives the number of bytes to be read.
+
+    4 public void mark(int read) ---> This sets the current marked position in the stream. The parameter gives the maximum limit of bytes that can be read before the marked position becomes invalid.
+
+    5 public long skip(long n) ---> Skips ‘n’ number of bytes from the stream. This returns the actual number of bytes skipped.
+
+Example
+
+Following is the example to demonstrate ByteArrayInputStream and ByteArrayOutputStream.
+
+
+            import java.io.*;
+            public class ByteStreamTest {
+
+               public static void main(String args[])throws IOException {
+                  ByteArrayOutputStream bOutput = new ByteArrayOutputStream(12);
+
+                  while( bOutput.size()!= 10 ) {
+                     // Gets the inputs from the user
+                     bOutput.write("hello".getBytes());
+                  }
+                  byte b [] = bOutput.toByteArray();
+                  System.out.println("Print the content");
+
+                  for(int x = 0 ; x < b.length; x++) {
+                     // printing the characters
+                     System.out.print((char)b[x]  + "   ");
+                  }
+                  System.out.println("   ");
+
+                  int c;
+                  ByteArrayInputStream bInput = new ByteArrayInputStream(b);
+                  System.out.println("Converting characters to Upper case " );
+
+                  for(int y = 0 ; y < 1; y++) {
+                     while(( c = bInput.read())!= -1) {
+                        System.out.println(Character.toUpperCase((char)c));
+                     }
+                     bInput.reset();
+                  }
+               }
+            }
+
+Following is the sample run of the above program −
+    Output
+
+            Print the content
+            h   e   l   l   o   h   e   l   l   o
+            Converting characters to Upper case
+            H
+            E
+            L
+            L
+            O
+            H
+            E
+            L
+            L
+            O
+
+
+   * DataOutputStream
+
+The DataInputStream is used in the context of DataOutputStream and can be used to read primitives.
+
+Following is the constructor to create an InputStream −
+
+    InputStream in = new DataInputStream(InputStream in);
+
+Once you have DataInputStream object in hand, then there is a list of helper methods, which can be used to read the stream or to do other operations on the stream.
+
+1 public final int read(byte[] r, int off, int len)throws IOException ---> Reads up to len bytes of data from the input stream into an array of bytes. Returns the total number of bytes read into the buffer otherwise -1 if it is end of file.
+
+2 Public final int read(byte [] b)throws IOException ---> Reads some bytes from the inputstream an stores in to the byte array. Returns the total number of bytes read into the buffer otherwise -1 if it is end of file.
+
+3   (a) public final Boolean readBooolean()throws IOException
+
+    (b) public final byte readByte()throws IOException
+
+    (c) public final short readShort()throws IOException
+
+    (d) public final Int readInt()throws IOException
+
+These methods will read the bytes from the contained InputStream. Returns the next two bytes of the InputStream as the specific primitive type.
+
+4 public String readLine() throws IOException ---> Reads the next line of text from the input stream. It reads successive bytes, converting each byte separately into a character, until it encounters a line terminator or end of file; the characters read are then returned as a String.
+
+Example
+
+Following is an example to demonstrate DataInputStream and DataOutputStream. This example reads 5 lines given in a file test.txt and converts those lines into capital letters and finally copies them into another file test1.txt.
+
+
+        import java.io.*;
+        public class DataInput_Stream {
+
+           public static void main(String args[])throws IOException {
+
+              // writing string to a file encoded as modified UTF-8
+              DataOutputStream dataOut = new DataOutputStream(new FileOutputStream("E:\\file.txt"));
+              dataOut.writeUTF("hello");
+
+              // Reading data from the same file
+              DataInputStream dataIn = new DataInputStream(new FileInputStream("E:\\file.txt"));
+
+              while(dataIn.available()>0) {
+                 String k = dataIn.readUTF();
+                 System.out.print(k+" ");
+              }
+           }
+        }
+
+Following is the sample run of the above program −
+Output
+
+    hello
+
+
+Example
+
+Following is the example to demonstrate InputStream and OutputStream −
+
+            import java.io.*;
+            public class fileStreamTest {
+
+               public static void main(String args[]) {
+
+                  try {
+                     byte bWrite [] = {11,21,3,40,5};
+                     OutputStream os = new FileOutputStream("test.txt");
+                     for(int x = 0; x < bWrite.length ; x++) {
+                        os.write( bWrite[x] );   // writes the bytes
+                     }
+                     os.close();
+
+                     InputStream is = new FileInputStream("test.txt");
+                     int size = is.available();
+
+                     for(int i = 0; i < size; i++) {
+                        System.out.print((char)is.read() + "  ");
+                     }
+                     is.close();
+                  } catch (IOException e) {
+                     System.out.print("Exception");
+                  }
+               }
+            }
+
+The above code would create file test.txt and would write given numbers in binary format. Same would be the output on the stdout screen.
+File Navigation and I/O
+
+There are several other classes that we would be going through to get to know the basics of File Navigation and I/O.
+
+    == File Class
+
+Java File class represents the files and directory pathnames in an abstract manner. This class is used for creation of files and directories, file searching, file deletion, etc.
+
+The File object represents the actual file/directory on the disk. Following is the list of constructors to create a File object.
+
+    1 File(File parent, String child) ---> This constructor creates a new File instance from a parent abstract pathname and a child pathname string.
+
+    2 File(String pathname) ---> This constructor creates a new File instance by converting the given pathname string into an abstract pathname.
+
+    3 File(String parent, String child) ---> This constructor creates a new File instance from a parent pathname string and a child pathname string.
+
+    4 File(URI uri) ---> This constructor creates a new File instance by converting the given file: URI into an abstract pathname.
+
+Once you have File object in hand, then there is a list of helper methods which can be used to manipulate the files.
+
+    1 public String getName() ---> Returns the name of the file or directory denoted by this abstract pathname.
+
+    2 public String getParent() ---> Returns the pathname string of this abstract pathname's parent, or null if this pathname does not name a parent directory.
+
+    3 public File getParentFile() ---> Returns the abstract pathname of this abstract pathname's parent, or null if this pathname does not name a parent directory.
+
+    4 public String getPath() ---> Converts this abstract pathname into a pathname string.
+
+    5 public boolean isAbsolute() ---> Tests whether this abstract pathname is absolute. Returns true if this abstract pathname is absolute, false otherwise.
+
+    6 public String getAbsolutePath() ---> Returns the absolute pathname string of this abstract pathname.
+
+    7 public boolean canRead() ---> Tests whether the application can read the file denoted by this abstract pathname. Returns true if and only if the file specified by this abstract pathname exists and can be read by the application; false otherwise.
+
+    8 public boolean canWrite() ---> Tests whether the application can modify to the file denoted by this abstract pathname. Returns true if and only if the file system actually contains a file denoted by this abstract pathname and the application is allowed to write to the file; false otherwise.
+
+    9 public boolean exists() ---> Tests whether the file or directory denoted by this abstract pathname exists. Returns true if and only if the file or directory denoted by this abstract pathname exists; false otherwise.
+
+    10 public boolean isDirectory() ---> Tests whether the file denoted by this abstract pathname is a directory. Returns true if and only if the file denoted by this abstract pathname exists and is a directory; false otherwise.
+
+    11 public boolean isFile() ---> Tests whether the file denoted by this abstract pathname is a normal file. A file is normal if it is not a directory and, in addition, satisfies other system-dependent criteria. Any non-directory file created by a Java application is guaranteed to be a normal file. Returns true if and only if the file denoted by this abstract pathname exists and is a normal file; false otherwise.
+
+    12 public long lastModified() ---> Returns the time that the file denoted by this abstract pathname was last modified. Returns a long value representing the time the file was last modified, measured in milliseconds since the epoch (00:00:00 GMT, January 1, 1970), or 0L if the file does not exist or if an I/O error occurs.
+
+    13 public long length() ---> Returns the length of the file denoted by this abstract pathname. The return value is unspecified if this pathname denotes a directory.
+
+    14 public boolean createNewFile() throws IOException ---> Atomically creates a new, empty file named by this abstract pathname if and only if a file with this name does not yet exist. Returns true if the named file does not exist and was successfully created; false if the named file already exists.
+
+    15 public boolean delete() ---> Deletes the file or directory denoted by this abstract pathname. If this pathname denotes a directory, then the directory must be empty in order to be deleted. Returns true if and only if the file or directory is successfully deleted; false otherwise.
+
+    16 public void deleteOnExit() ---> Requests that the file or directory denoted by this abstract pathname be deleted when the virtual machine terminates.
+
+    17 public String[] list() ---> Returns an array of strings naming the files and directories in the directory denoted by this abstract pathname.
+
+    18 public String[] list(FilenameFilter filter) ---> Returns an array of strings naming the files and directories in the directory denoted by this abstract pathname that satisfy the specified filter.
+
+    20 public File[] listFiles() ---> Returns an array of abstract pathnames denoting the files in the directory denoted by this abstract pathname.
+
+    21 public File[] listFiles(FileFilter filter) ---> Returns an array of abstract pathnames denoting the files and directories in the directory denoted by this abstract pathname that satisfy the specified filter.
+
+    22 public boolean mkdir() ---> Creates the directory named by this abstract pathname. Returns true if and only if the directory was created; false otherwise.
+
+    23 public boolean mkdirs() ---> Creates the directory named by this abstract pathname, including any necessary but nonexistent parent directories. Returns true if and only if the directory was created, along with all necessary parent directories; false otherwise.
+
+    24 public boolean renameTo(File dest) ---> Renames the file denoted by this abstract pathname. Returns true if and only if the renaming succeeded; false otherwise.
+
+    25 public boolean setLastModified(long time) ---> Sets the last-modified time of the file or directory named by this abstract pathname. Returns true if and only if the operation succeeded; false otherwise.
+
+    26 public boolean setReadOnly() ---> Marks the file or directory named by this abstract pathname so that only read operations are allowed. Returns true if and only if the operation succeeded; false otherwise.
+
+    27 public static File createTempFile(String prefix, String suffix, File directory) throws IOException ---> Creates a new empty file in the specified directory, using the given prefix and suffix strings to generate its name. Returns an abstract pathname denoting a newly-created empty file.
+
+    28 public static File createTempFile(String prefix, String suffix) throws IOException ---> Creates an empty file in the default temporary-file directory, using the given prefix and suffix to generate its name. Invoking this method is equivalent to invoking createTempFile(prefix, suffix, null). Returns abstract pathname denoting a newly-created empty file.
+
+    29 public int compareTo(File pathname) ---> Compares two abstract pathnames lexicographically. Returns zero if the argument is equal to this abstract pathname, a value less than zero if this abstract pathname is lexicographically less than the argument, or a value greater than zero if this abstract pathname is lexicographically greater than the argument.
+
+    30 public int compareTo(Object o) ---> Compares this abstract pathname to another object. Returns zero if the argument is equal to this abstract pathname, a value less than zero if this abstract pathname is lexicographically less than the argument, or a value greater than zero if this abstract pathname is lexicographically greater than the argument.
+
+    31 public boolean equals(Object obj) ---> Tests this abstract pathname for equality with the given object. Returns true if and only if the argument is not null and is an abstract pathname that denotes the same file or directory as this abstract pathname.
+
+    32 public String toString() ---> Returns the pathname string of this abstract pathname. This is just the string returned by the getPath() method.
+
+Example
+
+Following is an example to demonstrate File object −
+
+
+            package com.tutorialspoint;
+            import java.io.File;
+
+            public class FileDemo {
+
+               public static void main(String[] args) {
+                  File f = null;
+                  String[] strs = {"test1.txt", "test2.txt"};
+                  try {
+                     // for each string in string array
+                     for(String s:strs ) {
+                        // create new file
+                        f = new File(s);
+
+                        // true if the file is executable
+                        boolean bool = f.canExecute();
+
+                        // find the absolute path
+                        String a = f.getAbsolutePath();
+
+                        // prints absolute path
+                        System.out.print(a);
+
+                        // prints
+                        System.out.println(" is executable: "+ bool);
+                     }
+                  } catch (Exception e) {
+                     // if any I/O error occurs
+                     e.printStackTrace();
+                  }
+               }
+            }
+
+Consider there is an executable file test1.txt and another file test2.txt is non executable in the current directory. Let us compile and run the above program, This will produce the following result −
+    Output
+
+        /home/cg/root/2880380/test1.txt is executable: false
+        /home/cg/root/2880380/test2.txt is executable: false
+
+
+    == FileReader Class
+
+This class inherits from the InputStreamReader class. FileReader is used for reading streams of characters.
+
+This class has several constructors to create required objects. Following is the list of constructors provided by the FileReader class.
+
+    1 FileReader(File file) ---> This constructor creates a new FileReader, given the File to read from.
+
+    2 FileReader(FileDescriptor fd) ---> This constructor creates a new FileReader, given the FileDescriptor to read from.
+
+    3 FileReader(String fileName) ---> This constructor creates a new FileReader, given the name of the file to read from.
+
+Once you have FileReader object in hand then there is a list of helper methods which can be used to manipulate the files.
+
+    1 public int read() throws IOException --> Reads a single character. Returns an int, which represents the character read.
+
+    2 public int read(char [] c, int offset, int len) --> Reads characters into an array. Returns the number of characters read.
+
+Example
+
+Following is an example to demonstrate class −
+
+
+        import java.io.*;
+        public class FileRead {
+
+           public static void main(String args[])throws IOException {
+              File file = new File("Hello1.txt");
+
+              // creates the file
+              file.createNewFile();
+
+              // creates a FileWriter Object
+              FileWriter writer = new FileWriter(file);
+
+              // Writes the content to the file
+              writer.write("This\n is\n an\n example\n");
+              writer.flush();
+              writer.close();
+
+              // Creates a FileReader Object
+              FileReader fr = new FileReader(file);
+              char [] a = new char[50];
+              fr.read(a);   // reads the content to the array
+
+              for(char c : a)
+                 System.out.print(c);   // prints the characters one by one
+              fr.close();
+           }
+        }
+
+This will produce the following result −
+
+        Output
+
+            This
+            is
+            an
+            example
+
+    == FileWriter Class
+
+This class inherits from the OutputStreamWriter class. The class is used for writing streams of characters.
+
+This class has several constructors to create required objects. Following is a list.
+
+    1 FileWriter(File file) ---> This constructor creates a FileWriter object given a File object.
+
+    2 FileWriter(File file, boolean append) ---> This constructor creates a FileWriter object given a File object with a boolean indicating whether or not to append the data written.
+
+    3 FileWriter(FileDescriptor fd) ---> This constructor creates a FileWriter object associated with the given file descriptor.
+
+    4 FileWriter(String fileName) ---> This constructor creates a FileWriter object, given a file name.
+
+    5 FileWriter(String fileName, boolean append) ---> This constructor creates a FileWriter object given a file name with a boolean indicating whether or not to append the data written.
+
+Once you have FileWriter object in hand, then there is a list of helper methods, which can be used to manipulate the files.
+
+    1 public void write(int c) throws IOException ---> Writes a single character.
+
+    2 public void write(char [] c, int offset, int len) ---> Writes a portion of an array of characters starting from offset and with a length of len.
+
+    3 public void write(String s, int offset, int len) ---> Write a portion of a String starting from offset and with a length of len.
+
+Example
+
+Following is an example to demonstrate class −
+
+
+        import java.io.*;
+        public class FileRead {
+
+           public static void main(String args[])throws IOException {
+              File file = new File("Hello1.txt");
+
+              // creates the file
+              file.createNewFile();
+
+              // creates a FileWriter Object
+              FileWriter writer = new FileWriter(file);
+
+              // Writes the content to the file
+              writer.write("This\n is\n an\n example\n");
+              writer.flush();
+              writer.close();
+
+              // Creates a FileReader Object
+              FileReader fr = new FileReader(file);
+              char [] a = new char[50];
+              fr.read(a);   // reads the content to the array
+
+              for(char c : a)
+                 System.out.print(c);   // prints the characters one by one
+              fr.close();
+           }
+        }
+
+This will produce the following result −
+    Output
+
+        This
+        is
+        an
+        example
+
+
+Directories in Java
+===================
+
+A directory is a File which can contain a list of other files and directories. You use File object to create directories, to list down files available in a directory.
+For complete detail, check a list of all the methods which you can call on File object and what are related to directories.
+Creating Directories
+
+There are two useful File utility methods, which can be used to create directories −
+
+    *=* The mkdir()  ---> method creates a directory, returning true on success and false on failure. Failure indicates that the path specified in the File object already exists, or that the directory cannot be created because the entire path does not exist yet.
+
+    *=* The mkdirs() ---> method creates both a directory and all the parents of the directory.
+
+Following example creates "/tmp/user/java/bin" directory −
+
+Example
+
+        import java.io.File;
+        public class CreateDir {
+
+           public static void main(String args[]) {
+              String dirname = "/tmp/user/java/bin";
+              File d = new File(dirname);
+
+              // Create directory now.
+              d.mkdirs();
+           }
+        }
+
+Compile and execute the above code to create "/tmp/user/java/bin".
+
+Note − Java automatically takes care of path separators on UNIX and Windows as per conventions.
+If you use a forward slash (/) on a Windows version of Java, the path will still resolve correctly.
+
+Listing Directories
+-------------------
+
+You can use list( ) method provided by File object to list down all the files and directories available in a directory as follows −
+
+Example
+
+        import java.io.File;
+        public class ReadDir {
+
+           public static void main(String[] args) {
+              File file = null;
+              String[] paths;
+
+              try {
+                 // create new file object
+                 file = new File("/tmp");
+
+                 // array of files and directory
+                 paths = file.list();
+
+                 // for each name in the path array
+                 for(String path:paths) {
+                    // prints filename and directory name
+                    System.out.println(path);
+                 }
+              } catch (Exception e) {
+                 // if any error occurs
+                 e.printStackTrace();
+              }
+           }
+        }
+
+This will produce the following result based on the directories and files available in your /tmp directory −
+
+    Output
+
+        test1.txt
+        test2.txt
+        ReadDir.java
+        ReadDir.class

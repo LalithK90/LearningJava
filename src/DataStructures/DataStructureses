@@ -1,0 +1,764 @@
+                                        Data Structures
+                                        ---------------
+
+The data structures provided by the Java utility package are very powerful and perform a wide range of functions. These data structures consist of the following interface and classes −
+
+
+    *** Enumeration
+
+    *** BitSet
+
+    *** Vector
+
+    *** Stack
+
+    *** Dictionary
+
+    *** Hashtable
+
+    *** Properties
+
+All these classes are now legacy and Java-2 has introduced a new framework called Collections Framework, which is discussed in the next chapter. −
+
+The Enumeration
+---------------
+
+The Enumeration interface isn't itself a data structure, but it is very important within the context of other data structures. The Enumeration interface defines a means to retrieve successive elements from a data structure.
+
+For example, Enumeration defines a method called nextElement that is used to get the next element in a data structure that contains multiple elements.
+
+To have more detail about this interface, check The Enumeration.
+
+                        The Enumeration interface defines the methods by which you can enumerate (obtain one at a time) the elements in a collection of objects.
+
+                        This legacy interface has been superceded by Iterator. Although not deprecated, Enumeration is considered obsolete for new code. However, it is used by several methods defined by the legacy classes such as Vector and Properties, is used by several other API classes, and is currently in widespread use in application code.
+
+                        The methods declared by Enumeration are summarized in the following table −
+
+                        1 boolean hasMoreElements( ) ---> When implemented, it must return true while there are still more elements to extract, and false when all the elements have been enumerated.
+
+                        2 Object nextElement( ) ---> This returns the next object in the enumeration as a generic Object reference.
+                        Example
+
+                        Following is an example showing usage of Enumeration.
+
+
+                                import java.util.Vector;
+                                import java.util.Enumeration;
+
+                                public class EnumerationTester {
+
+                                   public static void main(String args[]) {
+                                      Enumeration days;
+                                      Vector dayNames = new Vector();
+
+                                      dayNames.add("Sunday");
+                                      dayNames.add("Monday");
+                                      dayNames.add("Tuesday");
+                                      dayNames.add("Wednesday");
+                                      dayNames.add("Thursday");
+                                      dayNames.add("Friday");
+                                      dayNames.add("Saturday");
+                                      days = dayNames.elements();
+
+                                      while (days.hasMoreElements()) {
+                                         System.out.println(days.nextElement());
+                                      }
+                                   }
+                                }
+
+                        This will produce the following result −
+                            Output
+
+                                Sunday
+                                Monday
+                                Tuesday
+                                Wednesday
+                                Thursday
+                                Friday
+                                Saturday
+
+The BitSet
+----------
+
+The BitSet class implements a group of bits or flags that can be set and cleared individually.
+
+This class is very useful in cases where you need to keep up with a set of Boolean values; you just assign a bit to each value and set or clear it as appropriate.
+
+For more details about this class, check The BitSet.
+
+                        The BitSet class creates a special type of array that holds bit values. The BitSet array can increase in size as needed. This makes it similar to a vector of bits. This is a legacy class but it has been completely re-engineered in Java 2, version 1.4.
+
+                        The BitSet defines the following two constructors.
+
+                        1 BitSet( ) ---> This constructor creates a default object.
+                        2 BitSet(int size) ---> This constructor allows you to specify its initial size, i.e., the number of bits that it can hold. All bits are initialized to zero.
+
+                        BitSet implements the Cloneable interface and defines the methods listed in the following table −
+
+                        1 void and(BitSet bitSet) ---> ANDs the contents of the invoking BitSet object with those specified by bitSet. The result is placed into the invoking object.
+
+                        2 void andNot(BitSet bitSet) ---> For each 1 bit in bitSet, the corresponding bit in the invoking BitSet is cleared.
+
+                        3 int cardinality( ) ---> Returns the number of set bits in the invoking object.
+
+                        4 void clear( ) ---> Zeros all bits.
+
+                        5 void clear(int index) ---> Zeros the bit specified by index.
+
+                        6 void clear(int startIndex, int endIndex) ---> Zeros the bits from startIndex to endIndex.
+
+                        7 Object clone( ) ---> Duplicates the invoking BitSet object.
+
+                        8 boolean equals(Object bitSet) ---> Returns true if the invoking bit set is equivalent to the one passed in bitSet. Otherwise, the method returns false.
+
+                        9 void flip(int index) ---> Reverses the bit specified by the index.
+
+                        10 void flip(int startIndex, int endIndex) ---> Reverses the bits from startIndex to endIndex.
+
+                        11 boolean get(int index) ---> Returns the current state of the bit at the specified index.
+
+                        12 BitSet get(int startIndex, int endIndex) ---> Returns a BitSet that consists of the bits from startIndex to endIndex. The invoking object is not changed.
+
+                        13 int hashCode( ) ---> Returns the hash code for the invoking object.
+
+                        14 boolean intersects(BitSet bitSet) ---> Returns true if at least one pair of corresponding bits within the invoking object and bitSet are 1.
+
+                        15 boolean isEmpty( ) ---> Returns true if all bits in the invoking object are zero.
+
+                        16 int length( ) ---> Returns the number of bits required to hold the contents of the invoking BitSet. This value is determined by the location of the last 1 bit.
+
+                        17 int nextClearBit(int startIndex) ---> Returns the index of the next cleared bit, (that is, the next zero bit), starting from the index specified by startIndex.
+
+                        18 int nextSetBit(int startIndex) ---> Returns the index of the next set bit (that is, the next 1 bit), starting from the index specified by startIndex. If no bit is set, -1 is returned.
+
+                        19 void or(BitSet bitSet) ---> ORs the contents of the invoking BitSet object with that specified by bitSet. The result is placed into the invoking object.
+
+                        20 void set(int index) ---> Sets the bit specified by index.
+
+                        21 void set(int index, boolean v) ---> Sets the bit specified by index to the value passed in v. True sets the bit, false clears the bit.
+
+                        22 void set(int startIndex, int endIndex) ---> Sets the bits from startIndex to endIndex.
+
+                        23 void set(int startIndex, int endIndex, boolean v) ---> Sets the bits from startIndex to endIndex, to the value passed in v. true sets the bits, false clears the bits.
+
+                        24 int size( ) ---> Returns the number of bits in the invoking BitSet object.
+
+                        25 String toString( ) ---> Returns the string equivalent of the invoking BitSet object.
+
+                        26 void xor(BitSet bitSet) ---> XORs the contents of the invoking BitSet object with that specified by bitSet. The result is placed into the invoking object.
+
+                        Example
+
+                        The following program illustrates several of the methods supported by this data structure −
+
+
+                                import java.util.BitSet;
+                                public class BitSetDemo {
+
+                                  public static void main(String args[]) {
+                                      BitSet bits1 = new BitSet(16);
+                                      BitSet bits2 = new BitSet(16);
+
+                                      // set some bits
+                                      for(int i = 0; i < 16; i++) {
+                                         if((i % 2) == 0) bits1.set(i);
+                                         if((i % 5) != 0) bits2.set(i);
+                                      }
+
+                                      System.out.println("Initial pattern in bits1: ");
+                                      System.out.println(bits1);
+                                      System.out.println("\nInitial pattern in bits2: ");
+                                      System.out.println(bits2);
+
+                                      // AND bits
+                                      bits2.and(bits1);
+                                      System.out.println("\nbits2 AND bits1: ");
+                                      System.out.println(bits2);
+
+                                      // OR bits
+                                      bits2.or(bits1);
+                                      System.out.println("\nbits2 OR bits1: ");
+                                      System.out.println(bits2);
+
+                                      // XOR bits
+                                      bits2.xor(bits1);
+                                      System.out.println("\nbits2 XOR bits1: ");
+                                      System.out.println(bits2);
+                                   }
+                                }
+
+                        This will produce the following result −
+                            Output
+
+                                    Initial pattern in bits1:
+                                    {0, 2, 4, 6, 8, 10, 12, 14}
+
+                                    Initial pattern in bits2:
+                                    {1, 2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14}
+
+                                    bits2 AND bits1:
+                                    {2, 4, 6, 8, 12, 14}
+
+                                    bits2 OR bits1:
+                                    {0, 2, 4, 6, 8, 10, 12, 14}
+
+                                    bits2 XOR bits1:
+                                    {}
+
+                                                    The Vector
+                                                    ----------
+
+The Vector class is similar to a traditional Java array, except that it can grow as necessary to accommodate new elements.
+
+Like an array, elements of a Vector object can be accessed via an index into the vector.
+
+The nice thing about using the Vector class is that you don't have to worry about setting it to a specific size upon creation; it shrinks and grows automatically when necessary.
+
+For more details about this class, check The Vector.
+
+                        Vector implements a dynamic array. It is similar to ArrayList, but with two differences −
+
+                            *** Vector is synchronized.
+
+                            *** Vector contains many legacy methods that are not part of the collections framework.
+
+                        Vector proves to be very useful if you don't know the size of the array in advance or you just need one that can change sizes over the lifetime of a program.
+
+                        Following is the list of constructors provided by the vector class.
+
+                        1 Vector( ) ---> This constructor creates a default vector, which has an initial size of 10.
+
+                        2 Vector(int size) ---> This constructor accepts an argument that equals to the required size, and creates a vector whose initial capacity is specified by size.
+
+                        3 Vector(int size, int incr) ---> This constructor creates a vector whose initial capacity is specified by size and whose increment is specified by incr. The increment specifies the number of elements to allocate each time that a vector is resized upward.
+
+                        4 Vector(Collection c) ---> This constructor creates a vector that contains the elements of collection c.
+
+                        Apart from the methods inherited from its parent classes, Vector defines the following methods −
+
+                        1  void add(int index, Object element) --->  Inserts the specified element at the specified position in this Vector.
+
+                        2  boolean add(Object o) --->  Appends the specified element to the end of this Vector.
+
+                        3  boolean addAll(Collection c) --->  Appends all of the elements in the specified Collection to the end of this Vector, in the order that they are returned by the specified Collection's Iterator.
+
+                        4  boolean addAll(int index, Collection c) --->  Inserts all of the elements in in the specified Collection into this Vector at the specified position.
+
+                        5  void addElement(Object obj) --->  Adds the specified component to the end of this vector, increasing its size by one.
+
+                        6  int capacity() --->  Returns the current capacity of this vector.
+
+                        7  void clear() --->  Removes all of the elements from this vector.
+
+                        8  Object clone() --->  Returns a clone of this vector.
+
+                        9  boolean contains(Object elem) --->  Tests if the specified object is a component in this vector.
+
+                        10  boolean containsAll(Collection c) --->  Returns true if this vector contains all of the elements in the specified Collection.
+
+                        11  void copyInto(Object[] anArray) --->  Copies the components of this vector into the specified array.
+
+                        12  Object elementAt(int index) --->  Returns the component at the specified index.
+
+                        13  Enumeration elements() --->  Returns an enumeration of the components of this vector.
+
+                        14  void ensureCapacity(int minCapacity) --->  Increases the capacity of this vector, if necessary, to ensure that it can hold at least the number of components specified by the minimum capacity argument.
+
+                        15  boolean equals(Object o) --->  Compares the specified Object with this vector for equality.
+
+                        16  Object firstElement() --->  Returns the first component (the item at index 0) of this vector.
+
+                        17  Object get(int index) --->  Returns the element at the specified position in this vector.
+
+                        18  int hashCode() --->  Returns the hash code value for this vector.
+
+                        19  int indexOf(Object elem) --->  Searches for the first occurence of the given argument, testing for equality using the equals method.
+
+                        20  int indexOf(Object elem, int index) --->  Searches for the first occurence of the given argument, beginning the search at index, and testing for equality using the equals method.
+
+                        21  void insertElementAt(Object obj, int index) --->  Inserts the specified object as a component in this vector at the specified index.
+
+                        22  boolean isEmpty() --->  Tests if this vector has no components.
+
+                        23  Object lastElement() --->  Returns the last component of the vector.
+
+                        24  int lastIndexOf(Object elem) --->  Returns the index of the last occurrence of the specified object in this vector.
+
+                        25  int lastIndexOf(Object elem, int index) --->  Searches backwards for the specified object, starting from the specified index, and returns an index to it.
+
+                        26  Object remove(int index) --->  Removes the element at the specified position in this vector.
+
+                        27  boolean remove(Object o) --->  Removes the first occurrence of the specified element in this vector, If the vector does not contain the element, it is unchanged.
+
+                        28  boolean removeAll(Collection c) --->  Removes from this vector all of its elements that are contained in the specified Collection.
+
+                        29  void removeAllElements() --->  Removes all components from this vector and sets its size to zero.
+
+                        30  boolean removeElement(Object obj) --->  Removes the first (lowest-indexed) occurrence of the argument from this vector.
+
+                        31  void removeElementAt(int index) --->  removeElementAt(int index).
+
+                        32  protected void removeRange(int fromIndex, int toIndex) --->  Removes from this List all of the elements whose index is between fromIndex, inclusive and toIndex, exclusive.
+
+                        33  boolean retainAll(Collection c) --->  Retains only the elements in this vector that are contained in the specified Collection.
+
+                        34  Object set(int index, Object element) --->  Replaces the element at the specified position in this vector with the specified element.
+
+                        35  void setElementAt(Object obj, int index) --->  Sets the component at the specified index of this vector to be the specified object.
+
+                        36  void setSize(int newSize) --->  Sets the size of this vector.
+
+                        37  int size() --->  Returns the number of components in this vector.
+
+                        38  List subList(int fromIndex, int toIndex) --->  Returns a view of the portion of this List between fromIndex, inclusive, and toIndex, exclusive.
+
+                        39  Object[] toArray() --->  Returns an array containing all of the elements in this vector in the correct order.
+
+                        40  Object[] toArray(Object[] a) --->  Returns an array containing all of the elements in this vector in the correct order; the runtime type of the returned array is that of the specified array.
+
+                        41  String toString() --->  Returns a string representation of this vector, containing the String representation of each element.
+
+                        42  void trimToSize() --->  Trims the capacity of this vector to be the vector's current size.
+
+                        Example
+
+                        The following program illustrates several of the methods supported by this collection −
+
+
+                                import java.util.*;
+                                public class VectorDemo {
+
+                                   public static void main(String args[]) {
+                                      // initial size is 3, increment is 2
+                                      Vector v = new Vector(3, 2);
+                                      System.out.println("Initial size: " + v.size());
+                                      System.out.println("Initial capacity: " + v.capacity());
+
+                                      v.addElement(new Integer(1));
+                                      v.addElement(new Integer(2));
+                                      v.addElement(new Integer(3));
+                                      v.addElement(new Integer(4));
+                                      System.out.println("Capacity after four additions: " + v.capacity());
+
+                                      v.addElement(new Double(5.45));
+                                      System.out.println("Current capacity: " + v.capacity());
+
+                                      v.addElement(new Double(6.08));
+                                      v.addElement(new Integer(7));
+                                      System.out.println("Current capacity: " + v.capacity());
+
+                                      v.addElement(new Float(9.4));
+                                      v.addElement(new Integer(10));
+                                      System.out.println("Current capacity: " + v.capacity());
+
+                                      v.addElement(new Integer(11));
+                                      v.addElement(new Integer(12));
+                                      System.out.println("First element: " + (Integer)v.firstElement());
+                                      System.out.println("Last element: " + (Integer)v.lastElement());
+
+                                      if(v.contains(new Integer(3)))
+                                         System.out.println("Vector contains 3.");
+
+                                      // enumerate the elements in the vector.
+                                      Enumeration vEnum = v.elements();
+                                      System.out.println("\nElements in vector:");
+
+                                      while(vEnum.hasMoreElements())
+                                         System.out.print(vEnum.nextElement() + " ");
+                                      System.out.println();
+                                   }
+                                }
+
+                        This will produce the following result −
+                            Output
+
+                                Initial size: 0
+                                Initial capacity: 3
+                                Capacity after four additions: 5
+                                Current capacity: 5
+                                Current capacity: 7
+                                Current capacity: 9
+                                First element: 1
+                                Last element: 12
+                                Vector contains 3.
+
+                                Elements in vector:
+                                1 2 3 4 5.45 6.08 7 9.4 10 11 12
+
+
+                                                    The Stack
+                                                    ----------
+
+The Stack class implements a last-in-first-out (LIFO) stack of elements.
+
+You can think of a stack literally as a vertical stack of objects; when you add a new element, it gets stacked on top of the others.
+
+When you pull an element off the stack, it comes off the top. In other words, the last element you added to the stack is the first one to come back off.
+
+
+                        Stack is a subclass of Vector that implements a standard last-in, first-out stack.
+
+                        Stack only defines the default constructor, which creates an empty stack. Stack includes all the methods defined by Vector, and adds several of its own.
+
+                                Stack( )
+
+                        Apart from the methods inherited from its parent class Vector, Stack defines the following methods −
+
+                        1 boolean empty() ---> Tests if this stack is empty. Returns true if the stack is empty, and returns false if the stack contains elements.
+
+                        2 Object peek( ) ---> Returns the element on the top of the stack, but does not remove it.
+
+                        3 Object pop( ) ---> Returns the element on the top of the stack, removing it in the process.
+
+                        4 Object push(Object element) ---> Pushes the element onto the stack. Element is also returned.
+
+                        5 int search(Object element) ---> Searches for element in the stack. If found, its offset from the top of the stack is returned. Otherwise, -1 is returned.
+
+                        Example
+
+                        The following program illustrates several of the methods supported by this collection −
+
+                                    import java.util.*;
+                                    public class StackDemo {
+
+                                       static void showpush(Stack st, int a) {
+                                          st.push(new Integer(a));
+                                          System.out.println("push(" + a + ")");
+                                          System.out.println("stack: " + st);
+                                       }
+
+                                       static void showpop(Stack st) {
+                                          System.out.print("pop -> ");
+                                          Integer a = (Integer) st.pop();
+                                          System.out.println(a);
+                                          System.out.println("stack: " + st);
+                                       }
+
+                                       public static void main(String args[]) {
+                                          Stack st = new Stack();
+                                          System.out.println("stack: " + st);
+                                          showpush(st, 42);
+                                          showpush(st, 66);
+                                          showpush(st, 99);
+                                          showpop(st);
+                                          showpop(st);
+                                          showpop(st);
+                                          try {
+                                             showpop(st);
+                                          } catch (EmptyStackException e) {
+                                             System.out.println("empty stack");
+                                          }
+                                       }
+                                    }
+
+                        This will produce the following result −
+                            Output
+
+                                    stack: [ ]
+                                    push(42)
+                                    stack: [42]
+                                    push(66)
+                                    stack: [42, 66]
+                                    push(99)
+                                    stack: [42, 66, 99]
+                                    pop -> 99
+                                    stack: [42, 66]
+                                    pop -> 66
+                                    stack: [42]
+                                    pop -> 42
+                                    stack: [ ]
+                                    pop -> empty stack
+
+
+                                                    The Dictionary
+                                                    --------------
+
+The Dictionary class is an abstract class that defines a data structure for mapping keys to values.
+
+This is useful in cases where you want to be able to access data via a particular key rather than an integer index.
+
+Since the Dictionary class is abstract, it provides only the framework for a key-mapped data structure rather than a specific implementation.
+
+
+                         Dictionary is an abstract class that represents a key/value storage repository and operates much like Map.
+
+                         Given a key and value, you can store the value in a Dictionary object. Once the value is stored, you can retrieve it by using its key. Thus, like a map, a dictionary can be thought of as a list of key/value pairs.
+
+                         The abstract methods defined by Dictionary are listed below −
+
+                         1 Enumeration elements( ) ---> Returns an enumeration of the values contained in the dictionary.
+
+                         2 Object get(Object key) ---> Returns the object that contains the value associated with the key. If the key is not in the dictionary, a null object is returned.
+
+                         3 boolean isEmpty( ) ---> Returns true if the dictionary is empty, and returns false if it contains at least one key.
+
+                         4 Enumeration keys( ) ---> Returns an enumeration of the keys contained in the dictionary.
+
+                         5 Object put(Object key, Object value) ---> Inserts a key and its value into the dictionary. Returns null if the key is not already in the dictionary; returns the previous value associated with the key if the key is already in the dictionary.
+
+                         6 Object remove(Object key) ---> Removes the key and its value. Returns the value associated with the key. If the key is not in the dictionary, a null is returned.
+
+                         7 int size( ) ---> Returns the number of entries in the dictionary.
+
+                         The Dictionary class is obsolete. You should implement the Map interface to obtain key/value storage functionality.
+
+                                    The Map interface maps unique keys to values. A key is an object that you use to retrieve a value at a later date.
+
+                                        Given a key and a value, you can store the value in a Map object. After the value is stored, you can retrieve it by using its key.
+
+                                        Several methods throw a NoSuchElementException when no items exist in the invoking map.
+
+                                        A ClassCastException is thrown when an object is incompatible with the elements in a map.
+
+                                        A NullPointerException is thrown if an attempt is made to use a null object and null is not allowed in the map.
+
+                                        An UnsupportedOperationException is thrown when an attempt is made to change an unmodifiable map.
+
+
+                                    1  void clear( ) --->  Removes all key/value pairs from the invoking map.
+
+                                    2  boolean containsKey(Object k) --->  Returns true if the invoking map contains k as a key. Otherwise, returns false.
+
+                                    3  boolean containsValue(Object v) --->  Returns true if the map contains v as a value. Otherwise, returns false.
+
+                                    4  Set entrySet( ) --->  Returns a Set that contains the entries in the map. The set contains objects of type Map.Entry. This method provides a set-view of the invoking map.
+
+                                    5  boolean equals(Object obj) --->  Returns true if obj is a Map and contains the same entries. Otherwise, returns false.
+
+                                    6  Object get(Object k) --->  Returns the value associated with the key k.
+
+                                    7  int hashCode( ) --->  Returns the hash code for the invoking map.
+
+                                    8  boolean isEmpty( ) --->  Returns true if the invoking map is empty. Otherwise, returns false.
+
+                                    9  Set keySet( ) --->  Returns a Set that contains the keys in the invoking map. This method provides a set-view of the keys in the invoking map.
+
+                                    10  Object put(Object k, Object v) --->  Puts an entry in the invoking map, overwriting any previous value associated with the key. The key and value are k and v, respectively. Returns null if the key did not already exist. Otherwise, the previous value linked to the key is returned.
+
+                                    11  void putAll(Map m) --->  Puts all the entries from m into this map.
+
+                                    12  Object remove(Object k) --->  Removes the entry whose key equals k.
+
+                                    13  int size( ) --->  Returns the number of key/value pairs in the map.
+
+                                    14  Collection values( ) --->  Returns a collection containing the values in the map. This method provides a collection-view of the values in the map.
+
+                                    Example
+
+                                    Map has its implementation in various classes like HashMap. Following is an example to explain map functionality −
+
+
+                                            import java.util.*;
+                                            public class CollectionsDemo {
+
+                                               public static void main(String[] args) {
+                                                  Map m1 = new HashMap();
+                                                  m1.put("Zara", "8");
+                                                  m1.put("Mahnaz", "31");
+                                                  m1.put("Ayan", "12");
+                                                  m1.put("Daisy", "14");
+
+                                                  System.out.println();
+                                                  System.out.println(" Map Elements");
+                                                  System.out.print("\t" + m1);
+                                               }
+                                            }
+
+                                    This will produce the following result −
+                                        Output
+
+                                            Map Elements
+                                                {Daisy = 14, Ayan = 12, Zara = 8, Mahnaz = 31}
+
+
+                                                            The Hashtable
+                                                            -------------
+
+The Hashtable class provides a means of organizing data based on some user-defined key structure.
+
+For example, in an address list hash table you could store and sort data based on a key such as ZIP code rather than on a person's name.
+
+The specific meaning of keys with regard to hash tables is totally dependent on the usage of the hash table and the data it contains.
+
+
+                          Hashtable was part of the original java.util and is a concrete implementation of a Dictionary.
+
+                          However, Java 2 re-engineered Hashtable so that it also implements the Map interface. Thus, Hashtable is now integrated into the collections framework. It is similar to HashMap, but is synchronized.
+
+                          Like HashMap, Hashtable stores key/value pairs in a hash table. When using a Hashtable, you specify an object that is used as a key, and the value that you want linked to that key. The key is then hashed, and the resulting hash code is used as the index at which the value is stored within the table.
+
+                          Following is the list of constructors provided by the HashTable class.
+
+                          1 Hashtable( ) ---> This is the default constructor of the hash table it instantiates the Hashtable class.
+
+                          2 Hashtable(int size) ---> This constructor accepts an integer parameter and creates a hash table that has an initial size specified by integer value size.
+
+                          3 Hashtable(int size, float fillRatio) ---> This creates a hash table that has an initial size specified by size and a fill ratio specified by fillRatio. This ratio must be between 0.0 and 1.0, and it determines how full the hash table can be before it is resized upward.
+
+                          4 Hashtable(Map < ? extends K, ? extends V > t) ---> This constructs a Hashtable with the given mappings.
+
+                          Apart from the methods defined by Map interface, Hashtable defines the following methods −
+
+                          1 void clear( ) ---> Resets and empties the hash table.
+
+                          2 Object clone( ) ---> Returns a duplicate of the invoking object.
+
+                          3 boolean contains(Object value) ---> Returns true if some value equal to the value exists within the hash table. Returns false if the value isn't found.
+
+                          4 boolean containsKey(Object key) ---> Returns true if some key equal to the key exists within the hash table. Returns false if the key isn't found.
+
+                          5 boolean containsValue(Object value) ---> Returns true if some value equal to the value exists within the hash table. Returns false if the value isn't found.
+
+                          6 Enumeration elements( ) ---> Returns an enumeration of the values contained in the hash table.
+
+                          7 Object get(Object key) ---> Returns the object that contains the value associated with the key. If the key is not in the hash table, a null object is returned.
+
+                          8 boolean isEmpty( ) ---> Returns true if the hash table is empty; returns false if it contains at least one key.
+
+                          9 Enumeration keys( ) ---> Returns an enumeration of the keys contained in the hash table.
+
+                          10 Object put(Object key, Object value) ---> Inserts a key and a value into the hash table. Returns null if the key isn't already in the hash table; returns the previous value associated with the key if the key is already in the hash table.
+
+                          11 void rehash( ) ---> Increases the size of the hash table and rehashes all of its keys.
+
+                          12 Object remove(Object key) ---> Removes the key and its value. Returns the value associated with the key. If the key is not in the hash table, a null object is returned.
+
+                          13 int size( ) ---> Returns the number of entries in the hash table.
+
+                          14 String toString( ) ---> Returns the string equivalent of a hash table.
+
+                          Example
+
+                          The following program illustrates several of the methods supported by this data structure −
+
+
+                                      import java.util.*;
+                                      public class HashTableDemo {
+
+                                         public static void main(String args[]) {
+                                            // Create a hash map
+                                            Hashtable balance = new Hashtable();
+                                            Enumeration names;
+                                            String str;
+                                            double bal;
+
+                                            balance.put("Zara", new Double(3434.34));
+                                            balance.put("Mahnaz", new Double(123.22));
+                                            balance.put("Ayan", new Double(1378.00));
+                                            balance.put("Daisy", new Double(99.22));
+                                            balance.put("Qadir", new Double(-19.08));
+
+                                            // Show all balances in hash table.
+                                            names = balance.keys();
+
+                                            while(names.hasMoreElements()) {
+                                               str = (String) names.nextElement();
+                                               System.out.println(str + ": " + balance.get(str));
+                                            }
+                                            System.out.println();
+
+                                            // Deposit 1,000 into Zara's account
+                                            bal = ((Double)balance.get("Zara")).doubleValue();
+                                            balance.put("Zara", new Double(bal + 1000));
+                                            System.out.println("Zara's new balance: " + balance.get("Zara"));
+                                         }
+                                      }
+
+                          This will produce the following result −
+                              Output
+
+                                      Qadir: -19.08
+                                      Zara: 3434.34
+                                      Mahnaz: 123.22
+                                      Daisy: 99.22
+                                      Ayan: 1378.0
+
+                                      Zara's new balance: 4434.34
+
+
+                                                        The Properties
+                                                        --------------
+
+Properties is a subclass of Hashtable. It is used to maintain lists of values in which the key is a String and the value is also a String.
+
+The Properties class is used by many other Java classes. For example, it is the type of object returned by System.getProperties( ) when obtaining environmental values.
+
+                            Properties is a subclass of Hashtable. It is used to maintain lists of values in which the key is a String and the value is also a String.
+
+                            The Properties class is used by many other Java classes. For example, it is the type of object returned by System.getProperties( ) when obtaining environmental values.
+
+                            Properties define the following instance variable. This variable holds a default property list associated with a Properties object.
+
+                            Properties defaults;
+
+                            Following is the list of constructors provided by the properties class.
+
+                            1 Properties( ) ---> This constructor creates a Properties object that has no default values.
+
+                            2 Properties(Properties propDefault) ---> Creates an object that uses propDefault for its default values. In both cases, the property list is empty.
+
+                            Apart from the methods defined by Hashtable, Properties define the following methods −
+
+                            1 String getProperty(String key) ---> Returns the value associated with the key. A null object is returned if the key is neither in the list nor in the default property list.
+
+                            2 String getProperty(String key, String defaultProperty) ---> Returns the value associated with the key; defaultProperty is returned if the key is neither in the list nor in the default property list.
+
+                            3 void list(PrintStream streamOut) ---> Sends the property list to the output stream linked to streamOut.
+
+                            4 void list(PrintWriter streamOut) ---> Sends the property list to the output stream linked to streamOut.
+
+                            5 void load(InputStream streamIn) throws IOException ---> Inputs a property list from the input stream linked to streamIn.
+
+                            6 Enumeration propertyNames( ) ---> Returns an enumeration of the keys. This includes those keys found in the default property list, too.
+
+                            7 Object setProperty(String key, String value) ---> Associates value with the key. Returns the previous value associated with the key, or returns null if no such association exists.
+
+                            8 void store(OutputStream streamOut, String description) ---> After writing the string specified by description, the property list is written to the output stream linked to streamOut.
+
+                            Example
+
+                            The following program illustrates several of the methods supported by this data structure −
+
+
+                                        import java.util.*;
+                                        public class PropDemo {
+
+                                           public static void main(String args[]) {
+                                              Properties capitals = new Properties();
+                                              Set states;
+                                              String str;
+
+                                              capitals.put("Illinois", "Springfield");
+                                              capitals.put("Missouri", "Jefferson City");
+                                              capitals.put("Washington", "Olympia");
+                                              capitals.put("California", "Sacramento");
+                                              capitals.put("Indiana", "Indianapolis");
+
+                                              // Show all states and capitals in hashtable.
+                                              states = capitals.keySet();   // get set-view of keys
+                                              Iterator itr = states.iterator();
+
+                                              while(itr.hasNext()) {
+                                                 str = (String) itr.next();
+                                                 System.out.println("The capital of " + str + " is " +
+                                                    capitals.getProperty(str) + ".");
+                                              }
+                                              System.out.println();
+
+                                              // look for state not in list -- specify default
+                                              str = capitals.getProperty("Florida", "Not Found");
+                                              System.out.println("The capital of Florida is " + str + ".");
+                                           }
+                                        }
+
+                            This will produce the following result −
+                                Output
+
+                                    The capital of Missouri is Jefferson City.
+                                    The capital of Illinois is Springfield.
+                                    The capital of Indiana is Indianapolis.
+                                    The capital of California is Sacramento.
+                                    The capital of Washington is Olympia.
+
+                                    The capital of Florida is Not Found.
