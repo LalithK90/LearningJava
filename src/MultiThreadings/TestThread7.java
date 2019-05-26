@@ -1,4 +1,4 @@
-package Multithreadings;
+package MultiThreadings;
 
 class RunnableDemo4 implements Runnable {
     public Thread t;

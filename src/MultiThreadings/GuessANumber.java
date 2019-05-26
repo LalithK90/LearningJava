@@ -1,4 +1,4 @@
-package Multithreadings;
+package MultiThreadings;
 
 // File Name : GuessANumber.java
 // Create a thread to extentd Thread

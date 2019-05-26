@@ -1,6 +1,6 @@
-package Multithreadings;
+package MultiThreadings;
 
-class Chat {
+class Chat1 {
     boolean flag = false;
 
     public synchronized void Question(String msg) {
@@ -31,11 +31,11 @@ class Chat {
     }
 }
 
-class T1 implements Runnable {
-    Chat m;
+class T3 implements Runnable {
+    Chat1 m;
     String[] s1 = { "Hi", "How are you ?", "I am also doing fine!" };
 
-    public T1(Chat m1) {
+    public T3(Chat1 m1) {
         this.m = m1;
         new Thread(this, "Question").start();
     }
@@ -47,11 +47,11 @@ class T1 implements Runnable {
     }
 }
 
-class T2 implements Runnable {
-    Chat m;
+class T4 implements Runnable {
+    Chat1 m;
     String[] s2 = { "Hi", "I am good, what about you?", "Great!" };
 
-    public T2(Chat m2) {
+    public T4(Chat1 m2) {
         this.m = m2;
         new Thread(this, "Answer").start();
     }
@@ -62,10 +62,10 @@ class T2 implements Runnable {
         }
     }
 }
-public class TestThread4 {
+public class TestThread5 {
     public static void main(String[] args) {
-        Chat m = new Chat();
-        new T1(m);
-        new T2(m);
+        Chat1 m = new Chat1();
+        new T3(m);
+        new T4(m);
     }
 }

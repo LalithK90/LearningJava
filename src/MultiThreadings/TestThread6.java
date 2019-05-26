@@ -1,4 +1,4 @@
-package Multithreadings;
+package MultiThreadings;
 
 public class TestThread6 {
     public static Object Lock1 = new Object();

@@ -1,6 +1,6 @@
-package Multithreadings;
+package MultiThreadings;
 
-class PrintDemo1 {
+class PrintDemo {
     public void printCount() {
         try {
             for(int i = 5; i > 0; i--) {
@@ -12,20 +12,18 @@ class PrintDemo1 {
     }
 }
 
-class ThreadDemo3 extends Thread {
+class ThreadDemo1 extends Thread {
     private Thread t;
     private String threadName;
-    PrintDemo1  PD;
+    PrintDemo  PD;
 
-    ThreadDemo3( String name,  PrintDemo1 pd) {
+    ThreadDemo1( String name,  PrintDemo pd) {
         threadName = name;
         PD = pd;
     }
 
     public void run() {
-        synchronized(PD) {
-            PD.printCount();
-        }
+        PD.printCount();
         System.out.println("Thread " +  threadName + " exiting.");
     }
 
@@ -38,13 +36,13 @@ class ThreadDemo3 extends Thread {
     }
 }
 
-public class TestThread3 {
-
+public class TestThread1 {
     public static void main(String args[]) {
-        PrintDemo1 PD = new PrintDemo1();
 
-        ThreadDemo3 T1 = new ThreadDemo3( "Thread - 1 ", PD );
-        ThreadDemo3 T2 = new ThreadDemo3( "Thread - 2 ", PD );
+        PrintDemo PD = new PrintDemo();
+
+        ThreadDemo1 T1 = new ThreadDemo1( "Thread - 1 ", PD );
+        ThreadDemo1 T2 = new ThreadDemo1( "Thread - 2 ", PD );
 
         T1.start();
         T2.start();

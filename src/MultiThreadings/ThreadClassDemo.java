@@ -1,4 +1,4 @@
-package Multithreadings;
+package MultiThreadings;
 
 // File Name : ThreadClassDemo.java
 public class ThreadClassDemo {

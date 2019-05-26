@@ -1,4 +1,4 @@
-package Multithreadings;
+package MultiThreadings;
 
 // File Name : DisplayMessage.java
 // Create a thread to implement Runnable

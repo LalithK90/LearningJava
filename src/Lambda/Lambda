@@ -1,0 +1,80 @@
+            Lambda
+           <======>
+Enable functional programming
+Readable and concise code
+Easier-to-use APIs and libraries
+Enables support for parallel processing
+
+Code in Object Oriented Programing
+-----------------------------------
+Everything is an object
+All code blocks are "associated" with classes and object
+
+ Inline values
+    String name ="lalith"
+    double pi = 3.14
+
+Lambda expression like a inline variable make with block of code
+    SEE Example
+    ===========
+step -> 1
+
+aBlockOfCode = public void helloWorld (){
+                    System.out.println("Hello Lambda");
+}
+
+step -> 2
+
+aBlockOfCode = -------  void helloWorld (){
+                    System.out.println("Hello Lambda");
+}
+
+step -> 3
+
+aBlockOfCode = -------  void ------ (){
+                    System.out.println("Hello Lambda");
+}
+
+step -> 4
+(Java 8 can identify what is the return type therefore no need to mentioned )
+aBlockOfCode = -------  void ------ (){
+                    System.out.println("Hello Lambda");
+}
+
+step -> 5
+
+aBlockOfCode = -------  ----- ------ (){
+               System.out.println("Hello Lambda");
+}
+
+step -> 6
+(Lambda )
+aBlockOfCode = () -> {
+                 System.out.println("Hello Lambda");
+}
+
+step -> 6
+(Lambda -- is one line )
+aBlockOfCode = () -> System.out.println("Hello Lambda");
+
+other example if there is one line with return statement no need to return key word
+
+    doubleNumberFunction = public int double(int a){
+                return a*2;
+                            }
+
+    doubleNumberFunction = (int a) -> return a*2;
+    doubleNumberFunction = (int a) -> a*2;
+
+    addFunction = (int a, int b) -> a + b;
+
+    exampleFunction = () -> System.out.println("Example");
+
+    safeDivideFunction = (int a, int b) -> a/b;
+    safeDivideFunction = (int a, int b) -> {
+       if (b==0) return 0;
+        return a/b;
+    };
+
+    stringLengthCountFunction = (String s) -> s.length();
+
