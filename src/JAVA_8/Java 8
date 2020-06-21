@@ -1525,7 +1525,7 @@ Java8Tester.java
 
                      // Encode using basic encoder
                      String base64encodedString = Base64.getEncoder().encodeToString(
-                        "TutorialsPoint?java8".getBytes("utf-8"));
+                        "ExampleLositha?java8".getBytes("utf-8"));
                      System.out.println("Base64 Encoded String (Basic) :" + base64encodedString);
 
                      // Decode
@@ -1533,7 +1533,7 @@ Java8Tester.java
 
                      System.out.println("Original String: " + new String(base64decodedBytes, "utf-8"));
                      base64encodedString = Base64.getUrlEncoder().encodeToString(
-                        "TutorialsPoint?java8".getBytes("utf-8"));
+                        "ExampleLositha?java8".getBytes("utf-8"));
                      System.out.println("Base64 Encoded String (URL) :" + base64encodedString);
 
                      StringBuilder stringBuilder = new StringBuilder();
@@ -1565,7 +1565,7 @@ C:\JAVA>java Java8Tester
 It should produce the following output −
 
             Base64 Encoded String (Basic) :VHV0b3JpYWxzUG9pbnQ/amF2YTg=
-            Original String: TutorialsPoint?java8
+            Original String: ExampleLositha?java8
             Base64 Encoded String (URL) :VHV0b3JpYWxzUG9pbnQ_amF2YTg=
             Base64 Encoded String (MIME) :YmU3NWY2ODktNGM5YS00ODlmLWI2MTUtZTVkOTk2YzQ1Njk1Y2EwZTg2OTEtMmRiZC00YTQ1LWJl
             NTctMTI1MWUwMTk0ZWQyNDE0NDAwYjgtYTYxOS00NDY5LTllYTctNjc1YzE3YWJhZTk1MTQ2MDQz

@@ -12,7 +12,7 @@ public class HelloWorld64 {
 
             // Encode using basic encoder
             String base64encodedString = Base64.getEncoder().encodeToString(
-                    "TutorialsPoint?java8".getBytes("utf-8"));
+                    "ExampleLositha?java8".getBytes("utf-8"));
             System.out.println("Base64 Encoded String (Basic) :" + base64encodedString);
 
             // Decode
@@ -20,7 +20,7 @@ public class HelloWorld64 {
 
             System.out.println("Original String: " + new String(base64decodedBytes, "utf-8"));
             base64encodedString = Base64.getUrlEncoder().encodeToString(
-                    "TutorialsPoint?java8".getBytes("utf-8"));
+                    "ExampleLositha?java8".getBytes("utf-8"));
             System.out.println("Base64 Encoded String (URL) :" + base64encodedString);
 
             StringBuilder stringBuilder = new StringBuilder();
