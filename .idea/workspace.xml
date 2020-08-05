@@ -25,17 +25,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="846b84fd-2db8-46d6-b502-b16adc270d53" name="Default Changelist" comment="data structure heap example was added">
-      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/doublyLinked/doublyLinked.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/firstLastList/firstLastList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/interIterator/interIterator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/linkList/linkList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/linkList2/linkList2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/linkQueue/linkQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/linkStack/linkStack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/listInsertionSort/listInsertionSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/sortedList/sortedList.java" afterDir="false" />
-    </list>
+    <list default="true" id="846b84fd-2db8-46d6-b502-b16adc270d53" name="Default Changelist" comment="data structure weighted graph was added" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -103,7 +93,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1596653719376</updated>
-      <workItem from="1596653743886" duration="874000" />
+      <workItem from="1596653743886" duration="1252000" />
     </task>
     <task id="LOCAL-00001" summary="some un version control file was added to the git">
       <created>1596654230376</created>
@@ -161,7 +151,56 @@
       <option name="project" value="LOCAL" />
       <updated>1596654613964</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="data structure link list example was added">
+      <created>1596654675380</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1596654675380</updated>
+    </task>
+    <task id="LOCAL-00010" summary="basic OOP concept programe was added">
+      <created>1596654719009</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1596654719009</updated>
+    </task>
+    <task id="LOCAL-00011" summary="data structure recursion example was added">
+      <created>1596654756547</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1596654756547</updated>
+    </task>
+    <task id="LOCAL-00012" summary="data structure shorting was added">
+      <created>1596654780528</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1596654780528</updated>
+    </task>
+    <task id="LOCAL-00013" summary="data structure stack and queues was added">
+      <created>1596654821901</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1596654821901</updated>
+    </task>
+    <task id="LOCAL-00014" summary="data structure tress and external storage was added">
+      <created>1596654894493</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1596654894494</updated>
+    </task>
+    <task id="LOCAL-00015" summary="data structure weighted graph was added">
+      <created>1596654941841</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1596654941841</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,9 +228,20 @@
     <MESSAGE value="data structure graphs example was added" />
     <MESSAGE value="data structure hash example was added" />
     <MESSAGE value="data structure heap example was added" />
-    <option name="LAST_COMMIT_MESSAGE" value="data structure heap example was added" />
+    <MESSAGE value="data structure link list example was added" />
+    <MESSAGE value="basic OOP concept programe was added" />
+    <MESSAGE value="data structure recursion example was added" />
+    <MESSAGE value="data structure shorting was added" />
+    <MESSAGE value="data structure stack and queues was added" />
+    <MESSAGE value="data structure tress and external storage was added" />
+    <MESSAGE value="data structure weighted graph was added" />
+    <option name="LAST_COMMIT_MESSAGE" value="data structure weighted graph was added" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="162" y="0" key="SettingsEditor" timestamp="1596655013417">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="162" y="0" key="SettingsEditor/0.0.1366.738/0.-1024.1280.1024@0.0.1366.738" timestamp="1596655013417" />
     <state x="274" y="101" key="Vcs.Push.Dialog.v2" timestamp="1596654431066">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
