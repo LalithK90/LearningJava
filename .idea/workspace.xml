@@ -25,7 +25,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="846b84fd-2db8-46d6-b502-b16adc270d53" name="Default Changelist" comment="data structure sorting example was added" />
+    <list default="true" id="846b84fd-2db8-46d6-b502-b16adc270d53" name="Default Changelist" comment="data structure heap example was added">
+      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/doublyLinked/doublyLinked.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/firstLastList/firstLastList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/interIterator/interIterator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/linkList/linkList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/linkList2/linkList2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/linkQueue/linkQueue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/linkStack/linkStack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/listInsertionSort/listInsertionSort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataStructures/linkedList/sortedList/sortedList.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +103,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1596653719376</updated>
-      <workItem from="1596653743886" duration="578000" />
+      <workItem from="1596653743886" duration="874000" />
     </task>
     <task id="LOCAL-00001" summary="some un version control file was added to the git">
       <created>1596654230376</created>
@@ -109,7 +119,49 @@
       <option name="project" value="LOCAL" />
       <updated>1596654311532</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="data structure array example was added">
+      <created>1596654359280</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1596654359280</updated>
+    </task>
+    <task id="LOCAL-00004" summary="data structure array example was added">
+      <created>1596654374864</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1596654374864</updated>
+    </task>
+    <task id="LOCAL-00005" summary="data structure binary tress example was added">
+      <created>1596654470931</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1596654470931</updated>
+    </task>
+    <task id="LOCAL-00006" summary="data structure graphs example was added">
+      <created>1596654520006</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1596654520006</updated>
+    </task>
+    <task id="LOCAL-00007" summary="data structure hash example was added">
+      <created>1596654579472</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1596654579472</updated>
+    </task>
+    <task id="LOCAL-00008" summary="data structure heap example was added">
+      <created>1596654613964</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1596654613964</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,12 +179,23 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="some un version control file was added to the git" />
     <MESSAGE value="data structure sorting example was added" />
-    <option name="LAST_COMMIT_MESSAGE" value="data structure sorting example was added" />
+    <MESSAGE value="data structure array example was added" />
+    <MESSAGE value="data structure binary tress example was added" />
+    <MESSAGE value="data structure graphs example was added" />
+    <MESSAGE value="data structure hash example was added" />
+    <MESSAGE value="data structure heap example was added" />
+    <option name="LAST_COMMIT_MESSAGE" value="data structure heap example was added" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="274" y="101" key="Vcs.Push.Dialog.v2" timestamp="1596654431066">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="274" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738/0.-1024.1280.1024@0.0.1366.738" timestamp="1596654431066" />
     <state x="499" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596654087914">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
