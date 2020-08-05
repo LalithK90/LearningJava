@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="DownloadedJarFile">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/DownloadedJarFile/qrgen-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/DownloadedJarFile/mysql-connector-java-8.0.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/DownloadedJarFile/javase-3.3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/DownloadedJarFile/core-3.3.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
